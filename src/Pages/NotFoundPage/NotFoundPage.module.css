@@ -1,0 +1,17 @@
+.NotFoundPage {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.NotFoundPage__title {
+    font-size: 260px;
+    line-height: 260px;
+}
+
+.NotFoundPage__subtitle {
+    font-size: 20px;
+    color: #FF75A1;
+}
