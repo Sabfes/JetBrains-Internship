@@ -1,9 +1,9 @@
 import React from 'react'
-import classes from './NotCompletedTodos.module.css'
 import Todo from "../../Components/Todo/Todo";
 import {useTypedSelector} from "../../hooks/useTypedSelector";
 import {todoCompleteToggle} from "../../Redux/actionCreators/todoActions";
 import {useDispatch} from "react-redux";
+import styled from "styled-components";
 
 const NotCompletedTodos = () => {
     const todos = useTypedSelector(state=> state.todo.todo)
@@ -14,7 +14,7 @@ const NotCompletedTodos = () => {
     }
 
     return (
-        <div className={classes.NotCompletedTodos}>
+        <StyledNotCompletedPage>
 
             {
                 todos.filter(el=> el.completed !== true).map((todo) => {
@@ -29,8 +29,16 @@ const NotCompletedTodos = () => {
                     />
                 })
             }
-        </div>
+        </StyledNotCompletedPage>
     )
 }
-
 export default NotCompletedTodos
+
+const StyledNotCompletedPage = styled.div`
+    padding-top: 60px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;   
+`

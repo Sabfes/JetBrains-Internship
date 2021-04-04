@@ -1,56 +1,82 @@
 import React from 'react'
-import classes from './Navbar.module.css'
 import {NavLink} from "react-router-dom";
+import styled from "styled-components";
 
 const Navbar: React.FC = () => {
-    return (
-        <div className={classes.Navbar}>
-            <NavLink
-                className={classes.Navbar__link}
-                activeClassName={classes.Navbar__linkActive}
-                to={'/home'}
-            >
-                <span className="material-icons">
-                home
-                </span>
-                <span className={classes.Navbar__textLink}>Home Page</span>
-            </NavLink>
+    const activeLinkStyle = {
+        color: '#FF75A1',
+        cursor: 'pointer',
+    }
 
-            <NavLink
-                className={classes.Navbar__link}
-                activeClassName={classes.Navbar__linkActive}
+    return (
+        <StyledNavbar>
+            <StyledNavLink
+                to={'/home'}
+                activeStyle={activeLinkStyle}
+            >
+                <span className="material-icons">home</span>
+                <StyledSpan>Home Page</StyledSpan>
+            </StyledNavLink>
+
+            <StyledNavLink
                 to={'/AllTodos'}
+                activeStyle={activeLinkStyle}
             >
                 <span className="material-icons">
                     library_books
                 </span>
-                <span className={classes.Navbar__textLink}>All Todos</span>
-            </NavLink>
+                <StyledSpan>All Todos</StyledSpan>
+            </StyledNavLink>
 
-            <NavLink
-                className={classes.Navbar__link}
-                activeClassName={classes.Navbar__linkActive}
+            <StyledNavLink
                 to={'/NotCompletedTodos'}
+                activeStyle={activeLinkStyle}
             >
                 <span className="material-icons">
                     not_interested
                 </span>
 
-                <span className={classes.Navbar__textLink}>Not completed</span>
-            </NavLink>
+                <StyledSpan>Not completed</StyledSpan>
+            </StyledNavLink>
 
-            <NavLink
-                className={classes.Navbar__link}
-                activeClassName={classes.Navbar__linkActive}
+            <StyledNavLink
                 to={'/Completed'}
+                activeStyle={activeLinkStyle}
             >
                 <span className="material-icons">
                     check_box
                 </span>
-                <span className={classes.Navbar__textLink}>Completed</span>
-            </NavLink>
-        </div>
+                <StyledSpan>Completed</StyledSpan>
+            </StyledNavLink>
+        </StyledNavbar>
     )
 }
-
 export default Navbar
+
+const StyledNavbar = styled.div`
+    min-width: 280px;
+    min-height: calc(100vh - 80px);
+    background-color: #21212B;
+    box-shadow: inset 0px 5px 12px -3px rgba(0,0,0,0.35);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+`
+
+const StyledNavLink = styled(NavLink)`
+    display: flex;
+    align-items: center;
+    margin-left: 50px;
+    text-decoration: none;
+    margin-top: 40px;
+    color: #B7B6BB;
+    font-size: 18px;
+    &:hover {
+        color: #FF75A1;
+        cursor: pointer;
+    }
+`
+
+const StyledSpan = styled.span`
+    margin-left: 5px;
+`

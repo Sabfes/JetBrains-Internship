@@ -11,8 +11,6 @@ export const useInput = (initialValue: any, validations: any) => {
         setDirty(true)
     }
 
-
-
     const clearValue = () => {
         setValue('')
         setDirty(false)

@@ -1,13 +1,30 @@
 import React from 'react'
-import classes from './NotFoundPage.module.css'
+import styled from "styled-components";
 
 const NotFoundPage: React.FC = () => {
     return (
-        <div className={classes.NotFoundPage}>
-            <h1 className={classes.NotFoundPage__title}>404</h1>
-            <span className={classes.NotFoundPage__subtitle}>not found</span>
-        </div>
+        <StyledNotFoundPage>
+            <StyledTitle>404</StyledTitle>
+            <StyledSubTitle>not found</StyledSubTitle>
+        </StyledNotFoundPage>
     )
 }
-
 export default NotFoundPage
+
+const StyledNotFoundPage = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+`
+
+const StyledTitle = styled.h1`
+    font-size: 260px;
+    line-height: 260px;
+`
+
+const StyledSubTitle = styled.span`
+    font-size: 20px;
+    color: #FF75A1;
+`

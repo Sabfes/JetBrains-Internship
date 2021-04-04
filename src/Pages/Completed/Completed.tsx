@@ -1,10 +1,10 @@
 import React from 'react'
-import classes from './Completed.module.css'
 import Todo from "../../Components/Todo/Todo";
 import {todoCompleteToggle} from "../../Redux/actionCreators/todoActions";
 import {useTypedSelector} from "../../hooks/useTypedSelector";
 import {useDispatch} from "react-redux";
 import ChartBar from '../../Components/Chart/Chart';
+import styled from "styled-components";
 
 const Completed = () => {
     const todos = useTypedSelector(state=> state.todo.todo)
@@ -37,7 +37,7 @@ const Completed = () => {
     }
 
     return (
-        <div className={classes.Completed}>
+        <StyledCompletedPage>
             {
                 todos.filter(el=> el.completed === true).map((todo) => {
                     return <Todo
@@ -52,8 +52,16 @@ const Completed = () => {
                 })
             }
             <ChartBar data={data}/>
-        </div>
+        </StyledCompletedPage>
     )
 }
-
 export default Completed
+
+const StyledCompletedPage = styled.div`
+    padding-top: 60px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+`

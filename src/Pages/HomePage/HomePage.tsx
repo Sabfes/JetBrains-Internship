@@ -1,19 +1,20 @@
 import React from 'react'
-import classes from './HomePage.module.css'
 import {HomeAnimation} from "../../Components/HomeTextAnimation/HomeAnimation";
+import styled from "styled-components";
 
 const HomePage: React.FC = () => {
     return (
-        <div className={classes.HomePage}>
+        <StyledHomePage>
             <HomeAnimation />
-            <div style={{display: 'flex', flexDirection: 'column'}}>
-                <h1>СДЕЛАТЬ СКРОЛИНГ ПРИ ДОБАЛЕНИИ ТУДУШКИ</h1>
-                <p>Сделать поддержку локалСторедж</p>
-                <p>github Pages</p>
-                <p>navbar открытие</p>
-            </div>
-        </div>
+        </StyledHomePage>
     )
 }
-
 export default HomePage
+
+const StyledHomePage = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    overflow: hidden;
+`
