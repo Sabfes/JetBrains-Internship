@@ -4,7 +4,8 @@ import {deleteTodo} from "../../Redux/actionCreators/todoActions";
 import styled from "styled-components";
 
 type PropsTypes = {
-    day: string,
+    dayOfCreating: string,
+    dayOfCompleted: string,
     text: string,
     isCompleted: boolean,
     desc: string | undefined,
@@ -12,9 +13,8 @@ type PropsTypes = {
     onClick: (todo: any) => void
 }
 
-const Todo: React.FC<PropsTypes> = ({id, day, text, isCompleted, desc, onClick}) => {
+const Todo: React.FC<PropsTypes> = ({id,dayOfCompleted, dayOfCreating, text, isCompleted, desc, onClick}) => {
     const dispatch = useDispatch()
-
     const deleteTodoHandler = () => {
         dispatch(deleteTodo(id))
     }
@@ -35,7 +35,10 @@ const Todo: React.FC<PropsTypes> = ({id, day, text, isCompleted, desc, onClick})
 
                 <FlexWrapper>
                     <StyledTodoText isCompleted={isCompleted}>{text}</StyledTodoText>
-                    <StyledDayTitle isCompleted={isCompleted}>{day}</StyledDayTitle>
+                    <StyledDayTitle isCompleted={isCompleted}>created: {dayOfCreating}</StyledDayTitle>
+                    {
+                        isCompleted ? <StyledDayTitle isCompleted={isCompleted}>completed:{dayOfCompleted}</StyledDayTitle> : null
+                    }
                 </FlexWrapper>
             </StyledTodoContent>
 

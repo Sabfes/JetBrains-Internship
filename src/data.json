@@ -1,15 +1,15 @@
 {
   "todos": [
-    {"id": 1, "text": "Сделать домашку", "day": "Monday", "completed": false},
-    {"id": 2, "text": "Убрать посуду", "day": "Wednesday", "completed": false},
-    {"id": 3, "text": "Помыть кота", "day": "Wednesday", "completed": true},
-    {"id": 4, "text": "Позвонить маме", "day": "Tuesday", "completed": true},
-    {"id": 5, "text": "Найти работу", "day": "Saturday", "completed": true},
-    {"id": 6, "text": "Убрать вещи", "day": "Monday", "completed": true},
-    {"id": 7, "text": "Забрать брата со школы", "day": "Friday", "completed": true},
-    {"id": 8, "text": "Поймать бабочку", "day": "Sunday", "completed": true},
-    {"id": 9, "text": "Поймать бабочку 2", "day": "Wednesday", "completed": true},
-    {"id": 10, "text": "Поймать бабочку 3", "day": "Sunday", "completed": true},
-    {"id": 11, "text": "Убрать вещи", "day": "Monday", "completed": true}
+    {"id": 1, "text": "Сделать домашку", "dayOfCreating": "Monday", "dayOfCompleted": "", "completed": false},
+    {"id": 2, "text": "Убрать посуду", "dayOfCreating": "Wednesday", "dayOfCompleted": "", "completed": false},
+    {"id": 3, "text": "Помыть кота", "dayOfCreating": "Sunday", "dayOfCompleted": "Wednesday", "completed": true},
+    {"id": 4, "text": "Позвонить маме", "dayOfCreating": "Sunday", "dayOfCompleted": "Tuesday", "completed": true},
+    {"id": 5, "text": "Найти работу", "dayOfCreating": "Sunday", "dayOfCompleted": "Tuesday", "completed": true},
+    {"id": 6, "text": "Убрать вещи", "dayOfCreating": "Sunday", "dayOfCompleted": "Friday", "completed": true},
+    {"id": 7, "text": "Забрать брата со школы", "dayOfCreating": "Wednesday", "dayOfCompleted": "Friday", "completed": true},
+    {"id": 8, "text": "Поймать бабочку", "dayOfCreating": "Sunday", "dayOfCompleted": "Wednesday","completed": true},
+    {"id": 9, "text": "Поймать бабочку 2", "dayOfCreating": "Sunday", "dayOfCompleted": "Sunday", "completed": true},
+    {"id": 10, "text": "Поймать бабочку 3", "dayOfCreating": "Sunday", "dayOfCompleted": "Sunday", "completed": true},
+    {"id": 11, "text": "Убрать вещи", "dayOfCreating": "Monday", "dayOfCompleted": "Monday", "completed": true}
   ]
 }

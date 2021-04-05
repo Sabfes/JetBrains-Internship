@@ -27,7 +27,7 @@ const Completed = () => {
     // Считаем количество выполненных задач по дням недели
     todos.forEach((el,i) => {
         for (let i in daysOfWeek) {
-            if (daysOfWeek[i].day === el.day && el.completed === true) {
+            if (daysOfWeek[i].day === el.dayOfCompleted && el.completed === true) {
                 daysOfWeek[i].count += 1
             }
         }
@@ -45,7 +45,8 @@ const Completed = () => {
                     return <Todo
                         onClick={() => makeTodoCompleted(todo)}
                         text={todo.text}
-                        day={todo.day}
+                        dayOfCreating={todo.dayOfCreating}
+                        dayOfCompleted={todo.dayOfCompleted}
                         key={todo.id}
                         desc={todo.desc}
                         id={todo.id}

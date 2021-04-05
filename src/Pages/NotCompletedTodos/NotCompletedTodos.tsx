@@ -21,7 +21,8 @@ const NotCompletedTodos = () => {
                     return <Todo
                         onClick={() => makeTodoCompleted(todo)}
                         text={todo.text}
-                        day={todo.day}
+                        dayOfCreating={todo.dayOfCreating}
+                        dayOfCompleted={todo.dayOfCompleted}
                         key={todo.id}
                         desc={todo.desc}
                         id={todo.id}

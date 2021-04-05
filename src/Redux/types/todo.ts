@@ -1,7 +1,8 @@
 export type TodoType = {
     id: number,
     text: string,
-    day: string,
+    dayOfCreating: string,
+    dayOfCompleted: string,
     completed: boolean,
     desc?: string | undefined,
 }

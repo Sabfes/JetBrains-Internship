@@ -5,7 +5,6 @@ import styled from "styled-components";
 const HomePage: React.FC = () => {
     return (
         <StyledHomePage>
-            {/*Анимация домашней страницы*/}
             <HomeAnimation />
         </StyledHomePage>
     )
