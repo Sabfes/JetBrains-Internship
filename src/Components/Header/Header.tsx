@@ -4,6 +4,7 @@ import styled from "styled-components";
 const Header: React.FC = () => {
     return (
         <StyledHeader>
+            {/*Логотип*/}
             <StyledTitle>JetBrains TodoList</StyledTitle>
         </StyledHeader>
     )

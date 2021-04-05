@@ -17,8 +17,7 @@ export const useInput = (initialValue: any, validations: any) => {
     }
 
     const onBlur = (e: any) => {
-        // setDirty(true)
-        console.log('asd')
+        setDirty(true)
     }
 
     return {

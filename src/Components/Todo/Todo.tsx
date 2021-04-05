@@ -21,21 +21,25 @@ const Todo: React.FC<PropsTypes> = ({id, day, text, isCompleted, desc, onClick})
 
     return (
         <StyledTodo isCompleted={isCompleted}>
-            <StyledCheckbox onClick={onClick}>
-                {/*Показ галочки*/}
-                {
-                    isCompleted
-                        ? <span className="material-icons">expand_more</span>
-                        : null
-                }
-            </StyledCheckbox>
 
-
+            {/*Текст задачи и день недели*/}
             <StyledTodoContent>
-                <StyledTodoText isCompleted={isCompleted}>{text}</StyledTodoText>
-                <StyledDayTitle isCompleted={isCompleted}>{day}</StyledDayTitle>
+                <StyledCheckbox onClick={onClick}>
+                    {/*Показ галочки*/}
+                    {
+                        isCompleted
+                            ? <span className="material-icons">expand_more</span>
+                            : null
+                    }
+                </StyledCheckbox>
+
+                <FlexWrapper>
+                    <StyledTodoText isCompleted={isCompleted}>{text}</StyledTodoText>
+                    <StyledDayTitle isCompleted={isCompleted}>{day}</StyledDayTitle>
+                </FlexWrapper>
             </StyledTodoContent>
 
+            {/*Кнопка удаления задачи*/}
             <StyledCloseIcon isCompleted={isCompleted} onClick={deleteTodoHandler} className="material-icons">
                 close
             </StyledCloseIcon>
@@ -47,14 +51,14 @@ export default Todo
 const StyledTodo = styled.div<{isCompleted: boolean}>`
     display: flex;
     align-items: flex-start;
-    justify-content: flex-start;
+    justify-content: space-between;
     position: relative;
     opacity: 1;
     transition: 1s;
     padding: 18px;
     margin-top: 20px;
-    width: 875px;
-    height: 80px;
+    width: 60%;
+    min-height: 80px;
     border-radius: 25px;
     background-color: ${({isCompleted}) => isCompleted ? '#FFBCBC' : '#21212B'};
     
@@ -64,11 +68,15 @@ const StyledTodo = styled.div<{isCompleted: boolean}>`
 `
 
 const StyledTodoContent = styled.div`
-    height: 40px;
+    min-height: 40px;
     margin-left: 18px;
     display: flex;
+`
+
+const FlexWrapper = styled.div`
+    margin-left: 10px;
+    display: flex;
     flex-direction: column;
-    align-items: flex-start;
 `
 
 const StyledCheckbox = styled.div`
@@ -77,6 +85,8 @@ const StyledCheckbox = styled.div`
     justify-content: center;
     width: 25px;
     height: 25px;
+    min-width: 25px;
+    min-height: 25px;
     border-radius: 5px;
     color: #FF75A1;
     border: 3px solid #FF75A1;
@@ -97,7 +107,6 @@ const StyledTodoText = styled.p<{isCompleted: boolean}>`
 `
 
 const StyledCloseIcon = styled.span<{isCompleted: boolean}>`
-    position: absolute;
     align-self: center;
     display: flex;
     right: 18px;

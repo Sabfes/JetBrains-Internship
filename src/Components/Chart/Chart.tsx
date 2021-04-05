@@ -27,11 +27,12 @@ const ChartBar: React.FC<PropsTypes> = ({data}) => {
 export default ChartBar
 
 const StyledChartBar = styled.div`
+    position: relative;
+    padding-top: 60px;
     margin: 40px auto;
     width: 700px;
-    height: 400px;
+    height: 450px;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
 `
-

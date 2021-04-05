@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Redirect, Route, Switch } from 'react-router-dom';
 import './App.css';
 import Header from "./Components/Header/Header";
@@ -10,22 +10,29 @@ import AllTodos from "./Pages/AllTodos/AllToodos";
 import NotCompletedTodos from "./Pages/NotCompletedTodos/NotCompletedTodos";
 
 function App() {
-  return (
-    <div>
-        <Header />
-        <div className={'content'} style={{display: 'flex'}}>
-            <Navbar />
-            <Switch>
-                <Route path={'/AllTodos'} exact component={AllTodos}/>
-                <Route path={'/NotCompletedTodos'} exact component={NotCompletedTodos}/>
-                <Route path={'/Completed'} exact component={Completed}/>
-                <Route path={'/home'} exact component={HomePage}/>
-                <Redirect from='/' to='/home'/>
-                <Route path={'*'} exact component={NotFoundPage}/>
-            </Switch>
-        </div>
-    </div>
-  );
-}
+    const [isNavbarOpen, setNavbarOpen] = useState(true)
 
+    const navbarToggle = () => {
+        setNavbarOpen( prevState => !prevState)
+    }
+
+    return (
+        <div>
+            <Header/>
+            <div className={'content'} style={{display: 'flex'}}>
+                <Navbar isNavbarOpen={isNavbarOpen} navbarToggle={navbarToggle}/>
+                <Switch>
+                    <Route path={'/AllTodos'} exact component={AllTodos}/>
+                    <Route path={'/NotCompletedTodos'} exact component={NotCompletedTodos}/>
+                    <Route path={'/Completed'} exact component={Completed}/>
+                    <Route path={'/home'} exact component={HomePage}/>
+                    <Redirect from='/' to='/home'/>
+                    <Route path={'*'} exact component={NotFoundPage}/>
+                </Switch>
+            </div>
+        </div>
+    );
+}
 export default App;
+
+

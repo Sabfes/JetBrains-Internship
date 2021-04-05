@@ -10,7 +10,9 @@ type PropsType = {
 export const ChartColumn:React.FC<PropsType> = ({label, todoCount, height}) => {
     return (
         <FlexWrapper>
+            {/*Лэйбл (день недели)*/}
             <StyledSpan height={height}>{label + ' ' + todoCount}</StyledSpan>
+            {/*Колонка диаграммы выполненных задач по дням недели*/}
             <StyledColumn height={height}></StyledColumn>
         </FlexWrapper>
     )

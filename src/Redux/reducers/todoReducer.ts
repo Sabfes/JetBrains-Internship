@@ -1,39 +1,41 @@
 import {TodoActions, TodoActionTypes, todoState} from "../types/todo";
-const data = require('../../data.json')
+import data from '../../data.json'
+
+const {todos} = (localStorage["data"]) ? JSON.parse(localStorage["data"]) : data
 
 const initialState: todoState = {
-    todo: data.todos || []
+    todos: todos
 }
 
 export const todoReducer = (state = initialState, action: TodoActions): todoState => {
     switch (action.type) {
         case TodoActionTypes.TODO_COMPLETED_TOGGLE:
-            const prevTodo = state.todo.map( el => {
+            const prevTodo = state.todos.map( el => {
                 if (el.id === action.payload) {
                     el.completed = !el.completed
                 }
                 return el
             })
             return {
-                ...state, todo: prevTodo
+                ...state, todos: prevTodo
             }
         case TodoActionTypes.DELETE_TODO:
             return {
-                ...state, todo: state.todo.filter(todo => todo.id !== action.payload)
+                ...state, todos: state.todos.filter(todo => todo.id !== action.payload)
             }
         case TodoActionTypes.ADD_TODO:
             const day = new Date().getDay()
             const dayEnglish = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
             const newTodo = {
-                id: state.todo.length + 1,
+                id: state.todos.length + 1,
                 text: action.payload,
                 day: dayEnglish[day],
                 completed: false
             }
-            const todos = state.todo
+            const todos = state.todos
             todos.push(newTodo)
             return {
-                ...state, todo: todos
+                ...state, todos: todos
             }
         default:
             return state

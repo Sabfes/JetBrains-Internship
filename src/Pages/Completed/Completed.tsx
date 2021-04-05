@@ -7,7 +7,7 @@ import ChartBar from '../../Components/Chart/Chart';
 import styled from "styled-components";
 
 const Completed = () => {
-    const todos = useTypedSelector(state=> state.todo.todo)
+    const todos = useTypedSelector(state=> state.todos.todos)
     const dispatch = useDispatch()
 
     const makeTodoCompleted = (todo: any) => {
@@ -24,6 +24,7 @@ const Completed = () => {
     ]
     const data = []
 
+    // Считаем количество выполненных задач по дням недели
     todos.forEach((el,i) => {
         for (let i in daysOfWeek) {
             if (daysOfWeek[i].day === el.day && el.completed === true) {
@@ -31,13 +32,14 @@ const Completed = () => {
             }
         }
     })
-
+    // Добавляем колличество задач в массив, позже отправляем data в диаграмму для отображения
     for (let i in daysOfWeek) {
         data.push(daysOfWeek[i].count)
     }
 
     return (
         <StyledCompletedPage>
+            {/*Выводим все завершенные задачи*/}
             {
                 todos.filter(el=> el.completed === true).map((todo) => {
                     return <Todo
@@ -51,6 +53,7 @@ const Completed = () => {
                     />
                 })
             }
+            {/*Диаграмма выполненных задач по дням недели*/}
             <ChartBar data={data}/>
         </StyledCompletedPage>
     )

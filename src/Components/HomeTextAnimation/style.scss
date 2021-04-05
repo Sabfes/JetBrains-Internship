@@ -40,7 +40,7 @@ $line-height: $clip-height - 15px;
   }
 }
 
-p {
+.Words-p {
   height: $clip-height;
   line-height: $line-height;
   padding: 0 10px;
@@ -51,7 +51,7 @@ p {
 }
 
 .Words:hover {
-  p {
+  .Words-p {
     color: #FF75A1;
     transform: translate3d(0, -($clip-height), 0);
   }

@@ -6,7 +6,7 @@ import {useDispatch} from "react-redux";
 import styled from "styled-components";
 
 const NotCompletedTodos = () => {
-    const todos = useTypedSelector(state=> state.todo.todo)
+    const todos = useTypedSelector(state=> state.todos.todos)
     const dispatch = useDispatch()
 
     const makeTodoCompleted = (todo: any) => {
@@ -15,7 +15,7 @@ const NotCompletedTodos = () => {
 
     return (
         <StyledNotCompletedPage>
-
+            {/*Выводим НЕ завершенные задачи*/}
             {
                 todos.filter(el=> el.completed !== true).map((todo) => {
                     return <Todo

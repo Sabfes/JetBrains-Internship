@@ -28,7 +28,7 @@ export interface DeleteTodoType {
 }
 
 export interface todoState {
-    todo: Array<TodoType>
+    todos: Array<TodoType>
 }
 
 export type TodoActions = TodoCompletedToggleType | DeleteTodoType | AddTodoType

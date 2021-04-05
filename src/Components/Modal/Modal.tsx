@@ -8,7 +8,11 @@ type PropsType = {
 
 const Modal: React.FC<PropsType> = ({active, setActive, children}) => {
     return (
-        <StyledModal active={active} onClick={() => setActive(false)}>
+        // Модальное окно
+        <StyledModal
+            active={active}
+            onClick={() => setActive(false)}
+        >
             <StyledModalContent active={active} onClick={e => e.stopPropagation()}>
                 {children}
             </StyledModalContent>

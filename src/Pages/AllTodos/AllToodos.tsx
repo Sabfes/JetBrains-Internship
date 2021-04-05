@@ -10,7 +10,7 @@ import styled from "styled-components";
 const AllTodos: React.FC = () => {
     const todoAnchorRef = useRef<HTMLDivElement>(null)
     const [active, setActive] = useState(false)
-    const todos = useTypedSelector( state => state.todo.todo)
+    const todos = useTypedSelector( state => state.todos.todos)
     const dispatch = useDispatch()
     const todoText = useInput('', {isEmpty: true, minLength: 5})
 
@@ -20,8 +20,10 @@ const AllTodos: React.FC = () => {
 
     const addTodoHandler = () => {
         dispatch(addTodo(todoText.value))
+        // Закрытие модалки и очистка инпутов
         setActive(false)
         todoText.clearValue()
+        // Скроллинг к добавленной задаче
         setTimeout(()=> {
             todoAnchorRef.current?.scrollIntoView({behavior: 'smooth'})
         }, 200)
@@ -32,9 +34,12 @@ const AllTodos: React.FC = () => {
             <Modal active={active} setActive={setActive}>
                 <StyledInputLabel htmlFor="todotext">Todo text</StyledInputLabel>
 
+                {/*Текст об ошибке - путое значение*/}
                 {(todoText.isDirty && todoText.isEmpty) && <div style={{color: 'red'}}>Напишите что-нибудь</div>}
+                {/*Текст об ошибке - минимальная длина */}
                 {(todoText.isDirty && todoText.minLengthError) && <div style={{color: 'red'}}>Минимальная длина - 5</div>}
 
+                {/*input*/}
                 <StyledTextInput
                     id="todotext"
                     type="text"
@@ -43,6 +48,7 @@ const AllTodos: React.FC = () => {
                     onBlur={e => todoText.onBlur(e)}
                 />
 
+                {/*Кнопка добавления задачи*/}
                 <StyledAddTodoBtn
                     disabled={!todoText.isInputValid}
                     onClick={addTodoHandler}
@@ -51,6 +57,7 @@ const AllTodos: React.FC = () => {
                 </StyledAddTodoBtn>
             </Modal>
 
+            {/*Вывод всех задач*/}
             {
                 todos.map((todo) => {
                     return <Todo
@@ -64,8 +71,10 @@ const AllTodos: React.FC = () => {
                             />
                 })
             }
+            {/*Якорь для скролинга к выполненной задачи*/}
             <div ref={todoAnchorRef}></div>
 
+            {/*Кнопка открытия модального окна для добавления новой задачи*/}
             <StyledModalBtn onClick={()=> setActive(true)}>
                 <span style={{fontSize: '40px'}} className="material-icons">add_circle_outline</span>
             </StyledModalBtn>
@@ -100,8 +109,8 @@ const StyledModalBtn = styled.button`
     cursor: pointer;
     background-color: #21212B;
     outline: none;
-    transition: .4s;    
-    
+    transition: .4s;
+
     &:hover {
         transform: scale(1.1);
     }
@@ -128,8 +137,8 @@ const StyledAddTodoBtn = styled.button`
     color: black;
     font-size: 20px;
     cursor: pointer;
-    transition: .4s;
-    
+    transition: .6s;
+
     &::disabled {
     background-color: #181820;
     color: #434343;

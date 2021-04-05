@@ -4,6 +4,7 @@ import styled from "styled-components";
 const NotFoundPage: React.FC = () => {
     return (
         <StyledNotFoundPage>
+            {/*Титул и сабтитул*/}
             <StyledTitle>404</StyledTitle>
             <StyledSubTitle>not found</StyledSubTitle>
         </StyledNotFoundPage>
